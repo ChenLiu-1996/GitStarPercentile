@@ -5,7 +5,7 @@ with open('README.md') as f:
 
 setup(
     name="git-star-percentile",
-    version="1.4",
+    version="1.5",
     license='MIT',
     author='Chen Liu',
     author_email='chen.liu.cl2482@yale.edu',

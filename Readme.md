@@ -14,15 +14,15 @@
 
 </div>
 
-- Have you ever wondered how popular your GitHub repository really is?
+Have you ever wondered how popular your GitHub repository really is?
 
-- Frustrated that GitHub doesn’t show where your star count ranks among all public repos?
+Frustrated that GitHub doesn’t show where your star count ranks among all public repos?
 
-- Maybe you’ve thought: "I have 200 stars — but is that a lot?" or "Where does my repo rank compared to the rest?"
+Maybe you’ve thought: "I have 200 stars — but is that a lot?" or "Where does my repo rank compared to the rest?"
 
-- **GitStarPercentile** tells you instantly:
+**GitStarPercentile** tells you instantly:
 
-- Enter your star count and instantly see your percentile, calculated from GitHub-wide data.
+Enter your star count and instantly see your percentile, calculated from GitHub-wide data.
 
 
 ## &#128640; Features

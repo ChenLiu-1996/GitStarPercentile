@@ -78,8 +78,8 @@ def main():
     rank = (curr_stars <= star_counts).sum()
     percentile = 100 * rank / total
 
-    print(f"Your repo is approximately at the top {percentile:.2f} percentile.")
-    print(f"({rank:,} out of {total:,} repos have fewer than this many stars.)")
+    print(f"Your repo is approximately among the top {percentile:.4f} %.")
+    print(f"({rank:,} out of {total:,} repos have at least this many stars.)")
 
 if __name__ == "__main__":
     main()

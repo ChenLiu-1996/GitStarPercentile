@@ -24,7 +24,7 @@ Maybe you’ve thought: "I have 200 stars — but is that a lot?" or "Where does
 <br>
 <code>GitStarPercentile</code> tells you instantly:
 
-    Enter your star count and instantly see your percentile, calculated from GitHub-wide data.
+Enter your star count and instantly see your percentile, calculated from GitHub-wide data.
 
 
 ## &#128640; Features

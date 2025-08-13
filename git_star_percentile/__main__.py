@@ -1,7 +1,9 @@
 import os
 import json
+import time
 import pandas as pd
 import requests
+from urllib.parse import urlencode
 
 CSV_URL = "https://raw.githubusercontent.com/ChenLiu-1996/GitStarPercentile/main/stats/github_repo_stars.csv"
 CACHE_DIR = os.path.join(os.path.expanduser("~"), ".git_star_percentile")
@@ -27,22 +29,48 @@ def _conditional_headers(meta: dict):
         h["If-None-Match"] = etag
     if lm:
         h["If-Modified-Since"] = lm
+    # Revalidate at origin (don’t serve from CDN cache without checking)
+    h["Cache-Control"] = "no-cache"
+    h["Pragma"] = "no-cache"
     return h
+
+def _maybe_cache_busted_url(url: str) -> str:
+    # Force refresh if env var is set, e.g. GSP_FORCE_REFRESH=1
+    if os.getenv("GSP_FORCE_REFRESH") in ("1", "true", "True"):
+        sep = "&" if "?" in url else "?"
+        return f"{url}{sep}{urlencode({'_': int(time.time())})}"
+    return url
 
 def load_csv():
     os.makedirs(CACHE_DIR, exist_ok=True)
 
     meta = _read_meta()
     headers = _conditional_headers(meta)
+    url = _maybe_cache_busted_url(CSV_URL)
 
     try:
-        # Conditional GET to avoid redownloading if unchanged
-        r = requests.get(CSV_URL, headers=headers, timeout=30)
+        r = requests.get(url, headers=headers, timeout=30)
         if r.status_code == 304 and os.path.exists(CACHE_FILE):
-            # Not modified; use cache
+            # If CDN is slow to update and you *know* there’s a new file,
+            # allow a one-shot retry with a cache-busting URL.
+            if not os.getenv("GSP_FORCE_REFRESH"):
+                # Retry once with a cache-buster
+                busted = _maybe_cache_busted_url(CSV_URL + ("&retry=1" if "?" in CSV_URL else "?retry=1"))
+                r2 = requests.get(busted, headers=headers, timeout=30)
+                if r2.ok and r2.content:
+                    with open(CACHE_FILE, "wb") as f:
+                        f.write(r2.content)
+                    new_meta = {
+                        "etag": r2.headers.get("ETag"),
+                        "last_modified": r2.headers.get("Last-Modified"),
+                        "content_length": r2.headers.get("Content-Length"),
+                        "url": CSV_URL,
+                    }
+                    _write_meta(new_meta)
+                # else fall through to cached file
+            # else: user explicitly wants to force refresh; _maybe_cache_busted_url already handled it
             pass
         elif r.ok:
-            # Updated or first time: write new bytes, then update metadata
             with open(CACHE_FILE, "wb") as f:
                 f.write(r.content)
             new_meta = {
@@ -53,16 +81,13 @@ def load_csv():
             }
             _write_meta(new_meta)
         else:
-            # If we have a cache, fall back to it; otherwise raise
             if not os.path.exists(CACHE_FILE):
                 r.raise_for_status()
             # else: silently use the cache
     except requests.RequestException:
-        # Network issue: if no cache, re-raise; else use cache
         if not os.path.exists(CACHE_FILE):
             raise
 
-    # Now load the CSV (header is present per your crawler)
     return pd.read_csv(CACHE_FILE, usecols=["stargazers_count"])
 
 def main():

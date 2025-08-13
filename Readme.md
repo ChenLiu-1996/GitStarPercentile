@@ -63,3 +63,13 @@ Your repository is in the top 3.7% of all public GitHub repositories.
 - Star statistics are **pulled from all public GitHub repositories**.
 - Data is stored in [stats/github_repo_stars.csv](stats/github_repo_stars.csv).
 - Want fresher stats? Run [the stats counter](count_all_repo_stars.py) yourself and submit a pull request.
+    ```bash
+    python count_all_repo_stars.py --github-token $YOUR_GITHUB_TOKEN
+    ```
+
+    The line above would run over all public repositories. For a more manageable run, sample 1 million instead.
+    ```bash
+    python count_all_repo_stars.py --github-token $YOUR_GITHUB_TOKEN --sample-size 1000000
+    ```
+
+    Note I will not consider merging results with `--sample-size` below 1 million.

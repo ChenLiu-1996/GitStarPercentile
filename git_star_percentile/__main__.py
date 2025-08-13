@@ -35,13 +35,23 @@ def main():
 
     df = load_csv()
     star_counts = df["stargazers_count"].dropna().astype(int)
+    star_counts_nonzero = star_counts[star_counts > 0]
 
     total = len(star_counts)
     rank = (curr_stars <= star_counts).sum()
     percentile = 100 * rank / total
 
-    print(f"Your repo is approximately among the top {percentile:.4f}%.")
-    print(f"({rank:,} out of {total:,} repos have at least this many stars.)")
+    print(f"Among all public repos, your repo is approximately at the top {percentile:.4f}%.")
+    print(f"({rank:,} out of {total:,} such repos have at least this many stars.)")
+
+    total = len(star_counts_nonzero)
+    rank = (curr_stars <= star_counts_nonzero).sum()
+    percentile = 100 * rank / total
+
+    print("\n")
+    print(f"Among all public repos with at least 1 star, your repo is approximately at the top {percentile:.4f}%.")
+    print(f"({rank:,} out of {total:,} such repos have at least this many stars.)")
+
 
 if __name__ == "__main__":
     main()

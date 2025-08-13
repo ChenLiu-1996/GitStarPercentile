@@ -55,7 +55,7 @@ You’ll be prompted to enter the number of stars for your repository:
 
 ```bash
 Enter the number of GitHub stars: 200
-Your repo is approximately among the top 0.1014%.
+Your repo is approximately among the top xx.xxxx%.
 ```
 
 ## &#128196; Data Source

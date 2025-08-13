@@ -16,12 +16,7 @@ query($ids:[ID!]!){
       id
       nameWithOwner
       stargazerCount
-      isFork
-      isArchived
-      isPrivate
       createdAt
-      pushedAt
-      primaryLanguage{ name }
       databaseId
     }
   }
@@ -55,8 +50,7 @@ def write_header_if_needed(path: str):
     if not os.path.exists(path):
         with open(path, "w", newline="", encoding="utf-8") as f:
             csv.writer(f).writerow([
-                "repo_id","node_id","full_name","stargazers_count",
-                "fork","archived","private","created_at","pushed_at","language"
+                "repo_id", "full_name", "stargazers_count", "created_at"
             ])
 
 def load_state(state_path: str):
@@ -124,15 +118,9 @@ def process_repos(sess, repos, buf, w, gql_batch, total_written):
                 if node and node.get("__typename") == "Repository":
                     w.writerow([
                         node.get("databaseId") or dbid,
-                        node.get("id"),
                         node.get("nameWithOwner") or fallback_name,
                         node.get("stargazerCount"),
-                        node.get("isFork"),
-                        node.get("isArchived"),
-                        node.get("isPrivate"),
                         node.get("createdAt"),
-                        node.get("pushedAt"),
-                        (node.get("primaryLanguage") or {}).get("name"),
                     ])
                     wrote += 1
             total_written += wrote

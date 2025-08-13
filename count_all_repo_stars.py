@@ -137,7 +137,7 @@ def main():
     ap.add_argument("--rest-sleep", type=float, default=0.05)
     ap.add_argument("--gql-sleep", type=float, default=0.0)
     ap.add_argument("--sample-size", type=int, default=None, help="Number of repos to sample; None for all repos")
-    ap.add_argument("--num-buckets", type=int, default=100, help="Number of buckets for stratified sampling")
+    ap.add_argument("--num-buckets", type=int, default=200, help="Number of buckets for stratified sampling")
     args = ap.parse_args()
 
     sess = session_with_token(args.github_token)

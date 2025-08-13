@@ -54,8 +54,8 @@ git-star-percentile
 You’ll be prompted to enter the number of stars for your repository:
 
 ```bash
-Enter the number of GitHub stars: 250
-Your repository is in the top 3.7% of all public GitHub repositories.
+Enter the number of GitHub stars: 500
+Your repo is approximately among the top 0.2085%.
 ```
 
 ## &#128196; Data Source

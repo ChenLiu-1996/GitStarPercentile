@@ -15,9 +15,10 @@
 </div>
 
 <br>
-&#129300; Have you ever wondered how popular your GitHub repository really is?
 
-&#x1F620; Frustrated that GitHub doesn’t show where your star count ranks among all public repos?
+&#129300; Have you ever wondered **how popular your GitHub repository really is**?
+
+&#x1F620; Frustrated that GitHub **doesn’t show where your star count ranks** among all public repos?
 
 Maybe you’ve thought:
 > "I have 200 stars — but is that a lot?"

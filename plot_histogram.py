@@ -3,9 +3,7 @@ import matplotlib.pyplot as plt
 from git_star_percentile.__main__ import load_csv
 
 
-def plot_star_distribution():
-    df = load_csv()
-    stars = df['stargazers_count'].dropna().astype(int)
+def plot_star_distribution(stars, save_path):
 
     cutoffs = {
         'Top 1%': np.percentile(stars, 99),
@@ -26,7 +24,6 @@ def plot_star_distribution():
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
 
-    stars = df['stargazers_count'].dropna().astype(int)
     stars_plus1 = stars + 1
 
     bins = np.logspace(np.log10(stars_plus1.min()), np.log10(stars_plus1.max()), 128)
@@ -53,9 +50,12 @@ def plot_star_distribution():
 
     fig.tight_layout(pad=2)
 
-    plt.savefig('./assets/github_stars_distribution.png', dpi=300)
+    plt.savefig(save_path, dpi=300)
     plt.close(fig)
 
 
 if __name__ == '__main__':
-    plot_star_distribution()
+    df = load_csv()
+    stars = df['stargazers_count'].dropna().astype(int)
+    plot_star_distribution(stars, save_path='./assets/github_stars_distribution_all.png')
+    plot_star_distribution(stars[stars > 0], save_path='./assets/github_stars_distribution_nonzero.png')

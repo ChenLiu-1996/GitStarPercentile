@@ -60,8 +60,14 @@ Your repo is approximately among the top xx.xxxx%.
 
 ## &#128196; Data Source
 
+### If we count all public repositories:
 <div align="center">
-    <img src="assets/github_stars_distribution.png" alt="GitHub Stars Distribution" style="max-width:100%; height:auto;">
+    <img src="assets/github_stars_distribution_all.png" alt="GitHub Stars Distribution" style="max-width:100%; height:auto;">
+</div>
+
+### If we only count public repositories with at least 1 star:
+<div align="center">
+    <img src="assets/github_stars_distribution_nonzero.png" alt="GitHub Stars Distribution" style="max-width:100%; height:auto;">
 </div>
 
 

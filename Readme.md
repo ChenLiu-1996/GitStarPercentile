@@ -64,6 +64,7 @@ Your repo is approximately among the top 0.4421%.
     <img src="assets/github_stars_distribution.png" alt="GitHub Stars Distribution" style="max-width:100%; height:auto;">
 </div>
 
+
 - Star statistics are **pulled from all public GitHub repositories**.
 - Data is stored in [stats/github_repo_stars.csv](stats/github_repo_stars.csv).
 - Want fresher stats? Run [the stats counter](count_all_repo_stars.py) yourself and submit a pull request.

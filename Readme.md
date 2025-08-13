@@ -1,5 +1,5 @@
 <h1 align="center">
-&#x2B50; <code>GitStarPercentile</code>
+&#11088; <code>GitStarPercentile</code>
 </h1>
 
 <div align="center">
@@ -14,50 +14,44 @@
 
 </div>
 
+> Have you ever wondered how popular your GitHub repository really is?
 
----
+> Frustrated that GitHub doesn’t show where your star count ranks among all public repos?
 
-Have you ever wondered **how popular your GitHub repository really is**?
+> Maybe you’ve thought: "I have 200 stars — but is that a lot?" or "Where does my repo rank compared to the rest?"
 
-Ever felt frustrated that GitHub doesn’t show where your star count ranks among *all* public repos?
+**GitStarPercentile** tells you instantly. Enter your star count and instantly see your percentile, calculated from GitHub-wide data.
 
-Have you found yourself thinking:
-> *"I have 200 stars — but is that a lot?"*
-> *"Where does my repo rank compared to the rest of GitHub repos?"*
 
-**GitStarPercentile** tells you instantly. Just type your star count, and it calculates your percentile based on the latest GitHub-wide statistics.
+## &#128640; Features
 
----
+- &#128202; **Instant percentile lookup** — get your repo’s rank in seconds.
+- &#128421; **Simple CLI** — just type `git-star-percentile` and enter your star count.
 
-## Features
-
-- 📊 **Instant percentile lookup** for any GitHub repo star count.
-- 🖥️ **Simple CLI** — just type `git-star-percentile` and enter your star count.
-
----
 
 ## &#128230; Installation
-
 From the command line:
 
 ```bash
-    pip install git-star-percentile --upgrade
+pip install git-star-percentile --upgrade
 ```
 
 ## &#9889; Usage
 From the command line:
 
 ```bash
-    git-star-percentile
+git-star-percentile
 ```
 
 You’ll be prompted to enter the number of stars for your repository:
 
-    Enter the number of GitHub stars: 250
-    Your repository is in the top 3.7% of all public GitHub repositories.
+```bash
+Enter the number of GitHub stars: 250
+Your repository is in the top 3.7% of all public GitHub repositories.
+```
 
 ## &#128196; Data Source
 
-- Star statistics are **read directly from GitHub’s public repositories**.
-- The dataset is stored in [stats/github_repo_stars.csv](stats/github_repo_stars.csv).
-- If you have the spare time to run an updated version, create a pull request so that we can get the latest numbers.
+- Star statistics are **pulled from all public GitHub repositories**.
+- Data is stored in [stats/github_repo_stars.csv](stats/github_repo_stars.csv).
+- Want fresher stats? Run [the stats counter](count_all_repo_stars.py) yourself and submit a pull request.

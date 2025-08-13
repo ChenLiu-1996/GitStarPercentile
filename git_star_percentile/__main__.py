@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import requests
 
-CSV_URL = "https://raw.githubusercontent.com/ChenLiu-1996/GitStarPercentile/main/stats/github_repo_stars.csv"
+CSV_URL = "https://raw.githubusercontent.com/ChenLiu-1996/GitStarPercentile/refs/heads/main/stats/github_repo_stars.csv"
 CACHE_DIR = os.path.join(os.path.expanduser("~"), ".git_star_percentile")
 CACHE_FILE = os.path.join(CACHE_DIR, "github_repo_stars.csv")
 

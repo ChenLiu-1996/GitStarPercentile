@@ -15,11 +15,13 @@
 </div>
 
 <br>
-Have you ever wondered how popular your GitHub repository really is?
+&#129300; Have you ever wondered how popular your GitHub repository really is?
 
-Frustrated that GitHub doesn’t show where your star count ranks among all public repos?
+&#x1F620; Frustrated that GitHub doesn’t show where your star count ranks among all public repos?
 
-Maybe you’ve thought: "I have 200 stars — but is that a lot?" or "Where does my repo rank compared to the rest?"
+Maybe you’ve thought:
+> "I have 200 stars — but is that a lot?"
+> "Where does my repo rank compared to the rest?"
 
 <br>
 <code>GitStarPercentile</code> tells you instantly:

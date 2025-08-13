@@ -7,9 +7,9 @@
 [![Twitter](https://img.shields.io/twitter/follow/ChenLiu-1996.svg?style=social)](https://twitter.com/ChenLiu_1996)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-ChenLiu-1996?color=blue)](https://www.linkedin.com/in/chenliu1996/)
 <br>
-[![Latest PyPI version](https://img.shields.io/pypi/v/citation-map.svg)](https://pypi.org/project/citation-map/)
-[![PyPI download 3 month](https://static.pepy.tech/badge/citation-map)](https://pepy.tech/projects/citation-map)
-[![PyPI download month](https://img.shields.io/pypi/dm/citation-map.svg)](https://pypistats.org/packages/citation-map)
+[![Latest PyPI version](https://img.shields.io/pypi/v/git-star-percentile.svg)](https://pypi.org/project/git-star-percentile/)
+[![PyPI download 3 month](https://static.pepy.tech/badge/git-star-percentile)](https://pepy.tech/projects/git-star-percentile)
+[![PyPI download month](https://img.shields.io/pypi/dm/git-star-percentile.svg)](https://pypistats.org/packages/git-star-percentile)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 </div>

@@ -22,6 +22,7 @@
 
 Maybe you’ve thought:
 > "I have 200 stars — but is that a lot?"
+
 > "Where does my repo rank compared to the rest?"
 
 <br>

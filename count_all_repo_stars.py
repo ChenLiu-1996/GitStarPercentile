@@ -148,7 +148,7 @@ def main():
     ap.add_argument("--gql-batch", type=int, default=100)
     ap.add_argument("--rest-sleep", type=float, default=0.05)
     ap.add_argument("--gql-sleep", type=float, default=0.0)
-    ap.add_argument("--sample-size", type=int, default=100000, help="Number of repos to sample; None for all repos")
+    ap.add_argument("--sample-size", type=int, default=1_000_000, help="Number of repos to sample; None for all repos")
     ap.add_argument("--num-buckets", type=int, default=100, help="Number of buckets for stratified sampling")
     args = ap.parse_args()
 
@@ -157,8 +157,13 @@ def main():
     start_bucket, since = load_state(args.state)
     print(f"[START] Resuming from bucket {start_bucket}, repo_id > {since} at {datetime.now().isoformat(timespec='seconds')}")
 
-    print("[INFO] Probing current max public repo id…", flush=True)
-    hint = max(1_000_000, int(since * 1.1) if since > 0 else 1_000_000_000)
+    print("[INFO] Probing current max public repo id...", flush=True)
+    if since > 0:
+        # Add a small buffer (5%) to the last seen ID, but at least +10,000
+        hint = since + max(10_000, int(since * 0.05))
+    else:
+        # First run: start at a reasonable mid‐range ID instead of a giant number
+        hint = 500_000_000
     max_pub_id = find_max_public_repo_id(sess, start_hint=hint)
     search_total = estimate_total_via_search(sess)
 

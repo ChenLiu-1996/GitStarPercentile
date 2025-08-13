@@ -33,7 +33,7 @@ Enter your star count and instantly see your percentile, calculated from GitHub-
 
 ## &#128640; Features
 
-- &#128202; **Instant percentile lookup** — get your repo’s rank in seconds.
+- &#128202; **Instant percentile lookup** — get your repo’s rank in milliseconds.
 - &#128421; **Simple CLI** — just type `git-star-percentile` and enter your star count.
 
 

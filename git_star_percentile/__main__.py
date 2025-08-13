@@ -21,7 +21,7 @@ def load_csv() -> pd.DataFrame:
             print(f"Network error ({e}). Using cached CSV: {CACHE_FILE}")
         else:
             # No cache to fall back on
-            raise
+            raise ValueError(f"Network error, and no cache file found at {CACHE_FILE}")
 
     return pd.read_csv(CACHE_FILE, usecols=["stargazers_count"])
 
@@ -37,7 +37,7 @@ def main():
     star_counts = df["stargazers_count"].dropna().astype(int)
 
     total = len(star_counts)
-    rank = (curr_stars <= star_counts).sum()  # repos with at least this many stars
+    rank = (curr_stars <= star_counts).sum()
     percentile = 100 * rank / total
 
     print(f"Your repo is approximately among the top {percentile:.4f}%.")

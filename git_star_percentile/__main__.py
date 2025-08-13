@@ -41,15 +41,14 @@ def main():
     rank = (curr_stars <= star_counts).sum()
     percentile = 100 * rank / total
 
-    print(f"Among all public repos, your repo is approximately at the top {percentile:.4f}%.")
+    print(f"\n\nAmong all public repos, your repo is approximately at the top {percentile:.4f}%.")
     print(f"({rank:,} out of {total:,} such repos have at least this many stars.)")
 
     total = len(star_counts_nonzero)
     rank = (curr_stars <= star_counts_nonzero).sum()
     percentile = 100 * rank / total
 
-    print("\n")
-    print(f"Among all public repos with at least 1 star, your repo is approximately at the top {percentile:.4f}%.")
+    print(f"\nAmong all public repos with at least 1 star, your repo is approximately at the top {percentile:.4f}%.")
     print(f"({rank:,} out of {total:,} such repos have at least this many stars.)")
 
 

@@ -25,9 +25,8 @@ def plot_star_distribution(stars, save_path):
     ax.spines['right'].set_visible(False)
 
     stars_plus1 = stars + 1
-
-    bins = np.logspace(np.log10(stars_plus1.min()), np.log10(stars_plus1.max()), 128)
-    ax.hist(stars_plus1, bins=bins, color='white', edgecolor='#0F4D92', linewidth=1.5, alpha=0.8)
+    bins_plus1 = np.logspace(np.log10(stars_plus1.min()), np.log10(stars_plus1.max()), 128)
+    ax.hist(stars, bins=bins_plus1 - 1, color='white', edgecolor='#0F4D92', linewidth=1.5, alpha=0.8)
     ax.set_xscale('log')
     ax.set_yscale('log')
 
